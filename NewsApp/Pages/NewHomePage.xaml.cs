@@ -40,7 +40,7 @@ public partial class NewHomePage : ContentPage
 	private void CvCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
 		var selectedItem = e.CurrentSelection.FirstOrDefault() as Category;
-		if (selectedItem != null) return;
+		if (selectedItem == null) return;
 		Navigation.PushAsync(new NewListPage(selectedItem.Name));
 		((CollectionView)sender).SelectedItem = null;
 	}
