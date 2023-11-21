@@ -25,4 +25,11 @@ public partial class NewListPage : ContentPage
 		}
 		CvNews.ItemsSource = ArticlesList;
 	}
+    private void CvNews_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var selectedItem = e.CurrentSelection.FirstOrDefault() as Article;
+        if (selectedItem == null) return;
+        Navigation.PushAsync(new NewDetailPage(selectedItem));
+        ((CollectionView)sender).SelectedItem = null;
+    }
 }
